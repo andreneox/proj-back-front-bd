@@ -34,10 +34,13 @@ const lista = [
   
   // Endpoint SCORES - READ ALL - [GET] /scores
   app.get("/scores", function (req, res) {
-    res.send("Ler todas as pontuações-scores");
+    res.send(lista);
   });
   
-  
+  // Endpoint SCORES  - CREATE - [POST] /scores
+app.post("/pontuacoes", function (req, res) {
+    res.send("Criar uma pontuação");
+  });
   
   app.listen(3000);
 
