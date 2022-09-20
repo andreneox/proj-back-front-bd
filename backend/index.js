@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
 
+
+// Vamos sinalizar para o express que estamos usando o 
+// JSON no body das requisições
+app.use(express.json());
+
 //criando endpoints para backend
 app.get("/", function (req, res) {
   res.send("Hello, World!");
@@ -38,9 +43,21 @@ const lista = [
   });
   
   // Endpoint SCORES  - CREATE - [POST] /scores
-app.post("/pontuacoes", function (req, res) {
-    res.send("Criar uma pontuação");
+  app.post("/scores", function (req, res) {
+  
+    // Pegando o item do corpo da requisição
+  const item = req.body;
+  
+  // Adicionando o item na lista
+  lista.push({
+    id: lista.length + 1,
+    nome: item.nome,
+    pontos: item.pontos,
   });
+
+  // Resposta positiva para o item criado
+  res.send("Item criado com sucesso!");
+});
   
   app.listen(3000);
 
