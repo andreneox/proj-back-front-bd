@@ -71,20 +71,23 @@ const lista = [
   });
   
   // Endpoint SCORES  - CREATE - [POST] /scores
-  app.post("/scores", function (req, res) {
+  app.post("/scores", async function (req, res) {
   
     // Pegando o item do corpo da requisição
   const item = req.body;
   
   // Adicionando o item na lista
-  lista.push({
-    id: lista.length + 1,
-    nome: item.nome,
-    pontos: item.pontos,
-  });
-
-  // Resposta positiva para o item criado
-  res.send("Item criado com sucesso!");
+  //deixando em comentario, pois foi realizado testes nele
+  //lista.push({
+   // id: lista.length + 1,
+   // nome: item.nome,
+   // pontos: item.pontos,
+   //});
+  
+   await collection.insertOne(item);
+  
+   // Resposta positiva para o item criado
+  res.send(item);
 });
   
   app.listen(3000);
