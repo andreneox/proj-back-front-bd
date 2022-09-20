@@ -45,12 +45,15 @@ app.get("/oi", function (req, res) {
 
 // Nosso backend vai armazenar as pontuações das jogadas
 // Criando  uma lista  para teste com as pontuações
+//Colocando a lista em comentarios pois foi realizado seu
+//proposito (teste)
+/*
 const lista = [
-    {
-      id: 1,
-      nome: "And",
-      pontos: 23,
-    },
+   {
+     id: 1,
+    nome: "And",
+    pontos: 23,
+  },
     {
       id: 2,
       nome: "John",
@@ -62,15 +65,22 @@ const lista = [
       pontos: 96,
     },
   ];
-  
+  */
+
   // Endpoint SCORES - READ ALL - [GET] /scores
   // Implementando o DB no metodo GET no endpoint /scores
+  // Adicionando Ordenação e limite no metodo GET no /scores 
   app.get("/scores", async function (req, res) {
-    const itens = await collection.find().toArray();
+    const itens = await collection
+      .find()
+      .sort({ pontos: -1 })
+      .limit(10)
+      .toArray();
+
     res.send(itens);
   });
   
-  // Endpoint SCORES  - CREATE - [POST] /scores
+  // Endpoint SCORES  - CREATE - [POST] /scores 
   app.post("/scores", async function (req, res) {
   
     // Pegando o item do corpo da requisição
@@ -86,7 +96,7 @@ const lista = [
   
    await collection.insertOne(item);
   
-   // Resposta positiva para o item criado
+   // Resposta para o item criado
   res.send(item);
 });
   
