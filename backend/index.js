@@ -2,6 +2,8 @@ const express = require("express");
 
 const { MongoClient } = require("mongodb");
 
+//instalando o mongodb com o npm no terminal
+// npm i mongodb
 const url = "mongodb://localhost:27017";
 // adicionando abaixo a  URL de conexao ao mongodb atlas - na nuvem
 //const url = "mongodb+srv://admin:pimNRf33rCj2ndzz@cluster0.lyzypg8.mongodb.net/";
