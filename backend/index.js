@@ -1,4 +1,24 @@
 const express = require("express");
+
+const { MongoClient } = require("mongodb");
+
+const url = "mongodb://localhost:27017";
+const dbName = "proj-back-front-bd";
+
+// Declaração da função assincrona main()
+async function main() {
+    // Realizar a conexão com o MongoClient
+    // MongoClient -> MongoDatabase -> MongoCollection
+  
+    // Conexões com o client podem levar um tempo para
+    //  concluir. Portanto, utilizamos o mecanismo de
+    //  Promises do JavaScript, que permitem aguardar
+    //  esse tempo. Para isso, vamos usar o async/await.
+  
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("scores");
+
 const app = express();
 
 
@@ -61,3 +81,7 @@ const lista = [
   
   app.listen(3000);
 
+}
+
+  // Executamos no final  a função main()
+main();
