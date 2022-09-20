@@ -15,9 +15,13 @@ async function main() {
     //  Promises do JavaScript, que permitem aguardar
     //  esse tempo. Para isso, vamos usar o async/await.
   
+    console.log("Conectando com o banco de dados...");
+
     const client = await MongoClient.connect(url);
     const db = client.db(dbName);
     const collection = db.collection("scores");
+
+    console.log("Banco de dados conectado com sucesso!");
 
 const app = express();
 
@@ -58,8 +62,10 @@ const lista = [
   ];
   
   // Endpoint SCORES - READ ALL - [GET] /scores
-  app.get("/scores", function (req, res) {
-    res.send(lista);
+  // Implementando o DB no metodo GET no endpoint /scores
+  app.get("/scores", async function (req, res) {
+    const itens = await collection.find().toArray();
+    res.send(itens);
   });
   
   // Endpoint SCORES  - CREATE - [POST] /scores
