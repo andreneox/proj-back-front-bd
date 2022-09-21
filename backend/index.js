@@ -101,8 +101,9 @@ const lista = [
    // Resposta para o item criado
   res.send(item);
 });
-  
-  app.listen(3000);
+ 
+// configurando a porta para o heroku
+app.listen(process.env.PORT || 3000);
 
 }
 
