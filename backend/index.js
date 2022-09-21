@@ -21,9 +21,12 @@ async function main() {
   
     console.log("Conectando com o banco de dados...");
 
+    // Vamos desativar o banco de dados 
+    /*
     const client = await MongoClient.connect(url);
     const db = client.db(dbName);
     const collection = db.collection("scores");
+    */
 
     console.log("Banco de dados conectado com sucesso!");
 
