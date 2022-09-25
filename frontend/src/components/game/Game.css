@@ -1,12 +1,36 @@
 .jogo {
-    background: #9be5e4;
-    height: 100vh;
-  }
-  
-  .nuvens {
-    width: 200px;
-  
-    position: absolute;
-    top: 30px;
-    left: 50%;
-  }
+  background: #9be5e4;
+  height: 100vh;
+}
+
+.nuvens {
+  width: 200px;
+
+  position: absolute;
+  top: 30px;
+  left: 50%;
+}
+
+.cano {
+  width: 50px;
+
+  position: absolute;
+  bottom: 30px;
+  right: 50px;
+}
+
+.mario {
+  height: 100px;
+
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+}
+
+.chao {
+  background: limegreen;
+  height: 30px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
