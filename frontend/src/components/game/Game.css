@@ -9,6 +9,9 @@
   position: absolute;
   top: 30px;
   left: 50%;
+
+   /* inserindo animacao das nuvens de forma simplificada.*/
+   animation: mover-direita-para-esquerda infinite 8s linear;
 }
 
 .cano {
