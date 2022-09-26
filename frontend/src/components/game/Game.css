@@ -53,7 +53,7 @@
 .mario-pulo {
 
   /*inserindo animacao no mario para ele pular*/
-  animation: mario-pulo 0.7s infinite;
+  animation: mario-pulo 0.7s ;
 }
 
 @keyframes mario-pulo {
