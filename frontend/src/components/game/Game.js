@@ -2,7 +2,7 @@ import "./Jogo.css";
 import nuvens from "../../assets/clouds.png";
 import cano from "../../assets/pipe.png";
 import mario from "../../assets/mario.gif";
-import React, {useState} from "react"; 
+import React, {useRef, useState} from "react"; 
 
 
 function Jogo() {
@@ -13,6 +13,42 @@ function Jogo() {
     No momento que um estado é atualizado, o componente atualiza
    tudo o que está sendo renderizado. */
 const [estaPulando, setEstaPulando] = useState (false);
+
+// criando as referencias para mario e o cano com o useRef
+const marioRef = useRef();
+const canoRef = useRef();
+
+// Criando a funcao marioEstaNoCano
+function marioEstaNoCano(){
+  // Acessamos as referências do mario e do cano atuais.
+  const mario = marioRef.current;
+  const cano = canoRef.current;
+
+// Se por acaso `mario` ou `cano` não forem encontrados,
+// encerra essa função
+  if ( !mario || !cano ) {
+    return;
+  }
+
+// Esse é o valor da lógica que determina se o mário
+// está na mesma posição do cano ou não (com as checagens
+// que consideram toda a área do cano)
+  return (
+    cano.offsetLeft > mario.offsetLeft && 
+    cano.offsetLeft < mario.offsetLeft + mario.offsetWidth &&
+    mario.offsetTop + mario.offsetHeight > cano.offsetTop 
+  );
+}
+
+// Implementação temporária para exibir se o mário está no cano
+// ou não
+setInterval (function(){
+  const valor = marioEstaNoCano();
+
+  console.log("Mario esta no cano?", valor);
+}, 100)
+
+
 
 document.onkeydown = function(){
  
@@ -28,10 +64,11 @@ document.onkeydown = function(){
 
 };
 
+// o padrao é a classe estar : ".mario"
 let marioClassName = "mario";
 
-// fazer um SE para mudar a nome da classe do Mario
-// para implementar o pulo.
+// fazer um SE (estaPulando = true) para mudar a nome da classe do Mario
+// de ".mario" para ".mario mario-pulo" e implementar o pulo.
 if (estaPulando) {
   marioClassName = "mario mario-pulo";
 }
