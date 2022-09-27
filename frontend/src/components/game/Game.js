@@ -16,11 +16,25 @@ const [estaPulando, setEstaPulando] = useState (false);
 
 document.onkeydown = function(){
  
-
+// atualizando para o estado true.
   setEstaPulando = true;
+
+  // timeout de 700ms = 0.7 segundos
+  setTimeout(function(){
+
+    //voltando para o estado inicial que era ' false '
+    setEstaPulando (false);
+  }, 700 )
+
 };
 
-console.log(15, {useState} );
+let marioClassName = "mario";
+
+// fazer um SE para mudar a nome da classe do Mario
+// para implementar o pulo.
+if (estaPulando) {
+  marioClassName = "mario mario-pulo";
+}
 
   return (
     <div className="jogo">
@@ -28,7 +42,7 @@ console.log(15, {useState} );
 
       <img className="cano" src={cano} alt="Cano" />
       
-      <img className="mario" src={mario} alt="Mário" />
+      <img className={marioClassName} src={mario} alt="Mário" />
 
       <div className="chao"></div>
     </div>
